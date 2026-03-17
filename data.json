@@ -18,6 +18,11 @@
   ],
   "talleres": [
     {
+      "title": "Técnicas de Dibujo",
+      "desc": "Grafito, carboncillo, tintas. Luces, sombras y perspectiva.",
+     "image": "./optm/t10.jpg?auto=format&fit=crop&w=600&q=80"
+    },
+    {
       "title": "Técnicas de Pintura",
       "desc": "Acrílicos, acuarelas, óleos, pasteles, abstracto, mixtas, collage.",
       "image": "./optm/t9.jpg?auto=format&fit=crop&w=600&q=80"
@@ -33,9 +38,10 @@
      "image": "./optm/t4.jpg?auto=format&fit=crop&w=600&q=80"
     },
     {
-      "title": "Técnicas de Dibujo",
-      "desc": "Grafito, carboncillo, tintas. Luces, sombras y perspectiva.",
-     "image": "./optm/t10.jpg?auto=format&fit=crop&w=600&q=80"
+      "title": "Mosaiquismo",
+      "desc": "Dominá la técnica del mosaiquismo.",
+     "image": "./optm/t6.jpg?auto=format&fit=crop&w=600&q=80"
     }
+   
   ]
 }
