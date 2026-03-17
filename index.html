@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nancy Gil | Arte & Talleres</title>
+    <title>Nancy de los Santos | Arte & Talleres</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -21,7 +21,7 @@
             background-color: var(--light);
             color: var(--dark);
             margin: 0;
-            touch-action: pan-y; /* Optimiza el scroll vertical */
+            overflow-x: hidden;
         }
 
         /* --- HEADER --- */
@@ -50,10 +50,7 @@
             justify-content: center;
             gap: 20px;
             margin: 20px 0;
-            position: sticky;
-            top: 0;
             background: var(--light);
-            z-index: 100;
             padding: 10px;
         }
 
@@ -66,6 +63,7 @@
             color: #999;
             padding-bottom: 5px;
             border-bottom: 2px solid transparent;
+            transition: 0.3s;
         }
 
         .tab-btn.active {
@@ -73,43 +71,44 @@
             border-bottom: 2px solid var(--gold);
         }
 
-        /* --- SLIDER DE OBRAS (CORREGIDO) --- */
+        /* --- SLIDER DE OBRAS (AHORA SÍ FUNCIONA PERFECTO) --- */
         .slider-section {
             position: relative;
             width: 100%;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
-        .slider-wrapper {
-            display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory; /* IMÁN: Alinea las fotos automáticamente */
-            scroll-behavior: smooth;
-            scrollbar-width: none; /* Oculta scrollbar */
-            -webkit-overflow-scrolling: touch;
-            padding: 20px 0;
-        }
-
-        .slider-wrapper::-webkit-scrollbar { display: none; }
-
         .gallery-container {
             display: flex;
-            padding: 0 10%; /* Margen para ver que hay más fotos */
+            gap: 20px;
+            overflow-x: auto; /* Activa el scroll nativo táctil */
+            scroll-snap-type: x mandatory; /* Efecto Imán */
+            scroll-behavior: smooth;
+            padding: 20px 5%; /* Espacio a los costados */
+            /* Ocultar barra de scroll en PC y Mobile */
+            scrollbar-width: none; 
+            -ms-overflow-style: none;
+            -webkit-overflow-scrolling: touch;
         }
+        
+        .gallery-container::-webkit-scrollbar { display: none; }
 
         .artwork-card {
-            flex: 0 0 75vw; /* En mobile, casi todo el ancho */
-            margin-right: 20px;
-            scroll-snap-align: center; /* Se imanta al centro */
+            flex: 0 0 85vw; /* En celular ocupa casi todo el ancho */
+            scroll-snap-align: center; /* Se imanta al centro de la pantalla */
             background: var(--white);
             padding: 15px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
             text-align: center;
-            box-sizing: border-box;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s;
         }
 
         @media (min-width: 768px) {
-            .artwork-card { flex: 0 0 350px; }
+            .artwork-card { flex: 0 0 350px; } /* En PC ocupa 350px */
+            .artwork-card:hover { transform: translateY(-10px); }
         }
 
         .artwork-card img {
@@ -119,24 +118,34 @@
             background: #fff;
         }
 
-        /* Botones Slider */
+        .artwork-card h3 {
+            font-family: 'Playfair Display', serif;
+            margin: 15px 0 5px;
+            font-size: 1.3rem;
+        }
+
+        /* Botones del Slider (Solo visibles en PC o tocables en celular si se desea) */
         .nav-btn {
             position: absolute;
-            top: 50%;
+            top: 45%;
             transform: translateY(-50%);
-            background: rgba(255,255,255,0.9);
-            border: none;
-            width: 45px;
-            height: 45px;
+            background: var(--white);
+            border: 1px solid #eee;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
             z-index: 10;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 1.2rem;
+            color: var(--dark);
+            transition: 0.3s;
         }
 
+        .nav-btn:hover { background: var(--gold); color: white; }
         .prev-btn { left: 10px; }
         .next-btn { right: 10px; }
 
@@ -145,7 +154,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
-            padding: 20px;
+            padding: 20px 5%;
         }
 
         .taller-card {
@@ -155,8 +164,8 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
 
-        .taller-card img { width: 100%; height: 200px; object-fit: cover; }
-        .taller-content { padding: 20px; }
+        .taller-card img { width: 100%; height: 220px; object-fit: cover; }
+        .taller-content { padding: 25px; }
 
         .btn-action {
             display: block;
@@ -168,67 +177,71 @@
             border-radius: 4px;
             font-weight: bold;
             margin-top: 15px;
+            transition: 0.3s;
         }
+        .btn-action:hover { background: var(--gold); }
 
-        /* --- LIGHTBOX (PANTALLA COMPLETA MEJORADA) --- */
+        /* --- LIGHTBOX (PANTALLA COMPLETA) --- */
         #lightbox {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.98);
-            display: none;
+            background: rgba(0,0,0,0.95);
+            display: none; /* Oculto por defecto */
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            z-index: 2000;
+            z-index: 9999;
+            touch-action: none; /* Evita que el celular haga pull-to-refresh */
         }
 
         #lightbox.active { display: flex; }
 
-        .lb-image-container {
+        .lb-image-wrapper {
+            position: relative;
             width: 100%;
-            max-height: 70vh;
+            height: 70vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
         }
 
         #lightbox-img {
-            max-width: 95%;
+            max-width: 90vw;
             max-height: 70vh;
             object-fit: contain;
-            transition: transform 0.3s ease;
+            box-shadow: 0 0 40px rgba(0,0,0,0.5);
+            transition: opacity 0.3s ease;
         }
 
-        /* Botones Lightbox Mobile Visible */
-        .lb-nav-container {
-            position: absolute;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            padding: 0 15px;
-            box-sizing: border-box;
-            z-index: 2001;
-        }
-
+        /* Botones Lightbox - FIJADOS A LOS BORDES */
         .lb-btn {
-            background: rgba(255,255,255,0.15);
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.1);
             color: white;
             border: none;
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
-            font-size: 1.5rem;
+            font-size: 2rem;
+            cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
+            z-index: 10000;
+            transition: 0.3s;
         }
+        .lb-btn:hover { background: var(--gold); }
+        .lb-prev { left: 10px; }
+        .lb-next { right: 10px; }
 
         .lb-close {
             position: absolute;
-            top: 20px; right: 20px;
-            color: white; font-size: 2.5rem;
-            z-index: 2002;
+            top: 20px; right: 25px;
+            color: white; font-size: 3rem;
+            cursor: pointer; z-index: 10000;
+            line-height: 1;
         }
 
         .lb-info {
@@ -238,17 +251,19 @@
             width: 100%;
         }
 
-        .lb-info h2 { font-family: 'Playfair Display'; margin: 0 0 10px; font-size: 1.2rem; }
+        .lb-info h2 { font-family: 'Playfair Display'; margin: 0 0 5px; color: var(--gold); font-size: 1.5rem; }
 
-        .tab-content { display: none; }
+        .tab-content { display: none; animation: fadeIn 0.5s; }
         .tab-content.active { display: block; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
 </head>
 <body>
 
 <header>
-    <h1 id="hero-title">Nancy Gil</h1>
-    <p id="hero-desc">Explorando el arte...</p>
+    <h1 id="hero-title">Nancy de los Santos</h1>
+    <p id="hero-desc">Cargando galería...</p>
 </header>
 
 <div class="tabs-nav">
@@ -256,41 +271,46 @@
     <button class="tab-btn" onclick="openTab(event, 'talleres')">Talleres</button>
 </div>
 
+<!-- OBRAS -->
 <section id="obras" class="tab-content active">
     <div class="slider-section">
         <button class="nav-btn prev-btn" onclick="moveSlider(-1)"><i class="fas fa-chevron-left"></i></button>
-        <div class="slider-wrapper" id="sliderWrapper">
-            <div class="gallery-container" id="gallerySlider"></div>
+        
+        <!-- Contenedor que scrollea -->
+        <div class="gallery-container" id="gallerySlider">
+            <!-- Las fotos se inyectan acá por JS -->
         </div>
+
         <button class="nav-btn next-btn" onclick="moveSlider(1)"><i class="fas fa-chevron-right"></i></button>
     </div>
 </section>
 
+<!-- TALLERES -->
 <section id="talleres" class="tab-content">
     <div class="talleres-grid" id="talleresGrid"></div>
 </section>
 
-<!-- LIGHTBOX -->
+<!-- LIGHTBOX (PANTALLA COMPLETA) -->
 <div id="lightbox">
     <span class="lb-close" onclick="closeLightbox()">&times;</span>
     
-    <div class="lb-nav-container">
-        <button class="lb-btn" onclick="changeImage(-1)"><i class="fas fa-chevron-left"></i></button>
-        <button class="lb-btn" onclick="changeImage(1)"><i class="fas fa-chevron-right"></i></button>
-    </div>
-
-    <div class="lb-image-container" id="lbTouchZone">
+    <button class="lb-btn lb-prev" onclick="changeImage(-1)"><i class="fas fa-angle-left"></i></button>
+    
+    <div class="lb-image-wrapper">
         <img id="lightbox-img" src="" alt="Zoom">
     </div>
 
+    <button class="lb-btn lb-next" onclick="changeImage(1)"><i class="fas fa-angle-right"></i></button>
+
     <div class="lb-info">
         <h2 id="lb-title"></h2>
-        <a id="lb-wa" href="#" target="_blank" class="btn-action">Consultar por WhatsApp</a>
+        <p id="lb-tech" style="color:#aaa; margin-bottom:15px;"></p>
+        <a id="lb-wa" href="#" target="_blank" class="btn-action" style="display:inline-block; padding: 10px 30px;">Consultar por WhatsApp</a>
     </div>
 </div>
 
 <script>
-    let obrasData = [];
+    let obrasData =[];
     let currentIdx = 0;
 
     async function loadData() {
@@ -308,7 +328,7 @@
                     <div class="artwork-card" onclick="openLightbox(${index})">
                         <img src="${obra.image}" alt="${obra.title}">
                         <h3>${obra.title}</h3>
-                        <p style="color:#888; font-size:0.8rem">${obra.tech}</p>
+                        <p style="color:#888; font-size:0.9rem">${obra.tech}</p>
                     </div>
                 `;
             });
@@ -319,60 +339,86 @@
                     <div class="taller-card">
                         <img src="${t.image}">
                         <div class="taller-content">
-                            <h3 style="font-family:'Playfair Display'; margin:0;">${t.title}</h3>
-                            <p style="color:#666; font-size:0.9rem">${t.desc}</p>
-                            <a href="https://wa.me/5491168618601?text=Info de taller: ${t.title}" class="btn-action">Info WhatsApp</a>
+                            <h3 style="font-family:'Playfair Display'; margin:0 0 10px;">${t.title}</h3>
+                            <p style="color:#666; font-size:0.95rem;">${t.desc}</p>
+                            <a href="https://wa.me/5491134564126?text=Hola Nancy, quiero info del taller: ${t.title}" class="btn-action">Consultar Taller</a>
                         </div>
                     </div>
                 `;
             });
-        } catch (e) { console.error(e); }
+        } catch (e) { console.error("Error al cargar JSON", e); }
     }
 
-    // Slider con Scroll Snap (Corregido para funcionar con botones y dedos)
+    // --- LÓGICA DEL CARRUSEL ---
     function moveSlider(direction) {
-        const wrapper = document.getElementById('sliderWrapper');
-        const scrollAmount = wrapper.offsetWidth * 0.8;
-        wrapper.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+        const container = document.getElementById('gallerySlider');
+        const card = container.querySelector('.artwork-card');
+        if (!card) return;
+        
+        // Calculamos el ancho de la tarjeta + el gap (espacio)
+        const scrollAmount = card.offsetWidth + 20; 
+        
+        container.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+
+        // Simular Carrusel Infinito (Vuelve al inicio/final)
+        setTimeout(() => {
+            if (direction === 1 && container.scrollLeft + container.clientWidth >= container.scrollWidth - 10) {
+                container.scrollTo({ left: 0, behavior: 'smooth' });
+            } else if (direction === -1 && container.scrollLeft <= 0) {
+                container.scrollTo({ left: container.scrollWidth, behavior: 'smooth' });
+            }
+        }, 400); // Espera a que termine el scroll fluido
     }
 
-    // Lightbox Lógica
+    // --- LÓGICA DEL LIGHTBOX (PANTALLA COMPLETA) ---
     function openLightbox(index) {
         currentIdx = index;
         updateLightbox();
         document.getElementById('lightbox').classList.add('active');
-        document.body.style.overflow = 'hidden';
+        document.body.style.overflow = 'hidden'; // Evita scroll de fondo
     }
 
     function closeLightbox() {
         document.getElementById('lightbox').classList.remove('active');
-        document.body.style.overflow = 'auto';
+        document.body.style.overflow = 'auto'; // Devuelve scroll de fondo
     }
 
     function changeImage(step) {
+        // Fórmula para loop infinito (si pasa la última, va a la primera)
         currentIdx = (currentIdx + step + obrasData.length) % obrasData.length;
-        updateLightbox();
+        
+        const img = document.getElementById('lightbox-img');
+        img.style.opacity = '0'; // Efecto fade out
+        
+        setTimeout(() => {
+            updateLightbox();
+            img.style.opacity = '1'; // Efecto fade in
+        }, 200);
     }
 
     function updateLightbox() {
         const obra = obrasData[currentIdx];
-        const img = document.getElementById('lightbox-img');
-        img.src = obra.image;
+        document.getElementById('lightbox-img').src = obra.image;
         document.getElementById('lb-title').innerText = obra.title;
-        document.getElementById('lb-wa').href = `https://wa.me/5491168618601?text=Hola Nancy, me interesa: ${obra.title}`;
+        document.getElementById('lb-tech').innerText = obra.tech;
+        document.getElementById('lb-wa').href = `https://wa.me/5491134564126?text=Hola Nancy, me interesa la obra: ${obra.title}`;
     }
 
-    // SOPORTE TÁCTIL PARA EL LIGHTBOX (SWIPE)
+    // --- SWIPE TÁCTIL PARA EL LIGHTBOX ---
     let touchStartX = 0;
-    const lbZone = document.getElementById('lbTouchZone');
+    const lightbox = document.getElementById('lightbox');
 
-    lbZone.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; });
-    lbZone.addEventListener('touchend', e => {
-        let touchEndX = e.changedTouches[0].screenX;
-        if (touchStartX - touchEndX > 50) changeImage(1); // Swipe Izquierda -> Siguiente
-        if (touchEndX - touchStartX > 50) changeImage(-1); // Swipe Derecha -> Anterior
+    lightbox.addEventListener('touchstart', e => {
+        touchStartX = e.changedTouches[0].screenX;
     });
 
+    lightbox.addEventListener('touchend', e => {
+        let touchEndX = e.changedTouches[0].screenX;
+        if (touchStartX - touchEndX > 50) changeImage(1); // Desliza izquierda -> Siguiente
+        if (touchEndX - touchStartX > 50) changeImage(-1); // Desliza derecha -> Anterior
+    });
+
+    // Pestañas Obras/Talleres
     function openTab(evt, tabName) {
         document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
         document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
