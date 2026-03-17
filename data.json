@@ -20,22 +20,22 @@
     {
       "title": "Técnicas de Pintura",
       "desc": "Acrílicos, acuarelas, óleos, pasteles, abstracto, mixtas, collage.",
-      "image": "https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=600&q=80"
+      "image": "./optm/t9.jpg?auto=format&fit=crop&w=600&q=80"
     },
     {
       "title": "Patinas y Reciclado",
       "desc": "Reciclado de muebles y objetos decorativos. Dale vida a tus espacios.",
-      "image": "https://images.unsplash.com/photo-1581428982868-e410dd127e90?auto=format&fit=crop&w=600&q=80"
+"image": "./optm/t1.jpg?auto=format&fit=crop&w=600&q=80"
     },
     {
       "title": "Decorativa & Decoupage",
       "desc": "Creación de objetos únicos y reciclado artístico.",
-      "image": "https://images.unsplash.com/photo-1606041011872-59659ceb7eb8?auto=format&fit=crop&w=600&q=80"
+     "image": "./optm/t4.jpg?auto=format&fit=crop&w=600&q=80"
     },
     {
       "title": "Técnicas de Dibujo",
       "desc": "Grafito, carboncillo, tintas. Luces, sombras y perspectiva.",
-      "image": "https://images.unsplash.com/photo-1514302240736-b1fee5985889?auto=format&fit=crop&w=600&q=80"
+     "image": "./optm/t10.jpg?auto=format&fit=crop&w=600&q=80"
     }
   ]
 }
