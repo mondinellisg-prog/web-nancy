@@ -1,1 +1,41 @@
-
+{
+  "hero_title": "Nancy Gil",
+  "hero_desc": "Artista Plástica & Docente. Explorando la sensibilidad a través del color y la forma.",
+  "obras": [
+    { "title": "Obra 1", "tech": "Técnica Mixta", "image": "./optm/1.jpg" },
+    { "title": "Obra 2", "tech": "Técnica Mixta", "image": "./optm/2.jpg" },
+    { "title": "Obra 3", "tech": "Técnica Mixta", "image": "./optm/3.jpg" },
+    { "title": "Obra 4", "tech": "Técnica Mixta", "image": "./optm/4.jpg" },
+    { "title": "Obra 5", "tech": "Técnica Mixta", "image": "./optm/5.jpg" },
+    { "title": "Obra 6", "tech": "Técnica Mixta", "image": "./optm/6.jpg" },
+    { "title": "Obra 7", "tech": "Técnica Mixta", "image": "./optm/7.jpg" },
+    { "title": "Obra 8", "tech": "Técnica Mixta", "image": "./optm/8.jpg" },
+    { "title": "Obra 9", "tech": "Técnica Mixta", "image": "./optm/9.jpg" },
+    { "title": "Obra 10", "tech": "Técnica Mixta", "image": "./optm/10.jpg" },
+    { "title": "Obra 11", "tech": "Técnica Mixta", "image": "./optm/11.jpg" },
+    { "title": "Obra 12", "tech": "Técnica Mixta", "image": "./optm/12.jpg" },
+    { "title": "Obra 13", "tech": "Técnica Mixta", "image": "./optm/13.jpg" }
+  ],
+  "talleres": [
+    {
+      "title": "Técnicas de Pintura",
+      "desc": "Acrílicos, acuarelas, óleos, pasteles, abstracto, mixtas, collage.",
+      "image": "https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      "title": "Patinas y Reciclado",
+      "desc": "Reciclado de muebles y objetos decorativos. Dale vida a tus espacios.",
+      "image": "https://images.unsplash.com/photo-1581428982868-e410dd127e90?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      "title": "Decorativa & Decoupage",
+      "desc": "Creación de objetos únicos y reciclado artístico.",
+      "image": "https://images.unsplash.com/photo-1606041011872-59659ceb7eb8?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      "title": "Técnicas de Dibujo",
+      "desc": "Grafito, carboncillo, tintas. Luces, sombras y perspectiva.",
+      "image": "https://images.unsplash.com/photo-1514302240736-b1fee5985889?auto=format&fit=crop&w=600&q=80"
+    }
+  ]
+}
