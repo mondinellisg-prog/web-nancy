@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: mondinellisg-prog/web-nancy-gil
+  repo: mondinellisg-prog/web-nancy
   branch: main
   base_url: https://sveltia-auth-proxy.tu-usuario.workers.dev # TU URL DEL WORKER SIN EL /callback
   
