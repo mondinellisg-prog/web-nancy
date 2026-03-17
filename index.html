@@ -1,1 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nancy Gil | Arte</title>
+    <!-- Mismos estilos del mensaje anterior aquí (CSS) -->
+    <style>
+        /* ... COPIAR EL CSS DEL MENSAJE ANTERIOR ... */
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <h1 id="hero-title">Cargando...</h1>
+        <p id="hero-desc"></p>
+    </header>
 
+    <main class="tabs-container">
+        <div class="tabs-nav">
+            <button class="tab-btn active" onclick="openTab(event, 'obras')">Galería de Obras</button>
+            <button class="tab-btn" onclick="openTab(event, 'talleres')">Cursos y Talleres</button>
+        </div>
+
+        <section id="obras" class="tab-content active">
+            <div class="gallery-wrapper">
+                <div class="gallery-slider" id="gallerySlider">
+                    <!-- Se llena con JS -->
+                </div>
+            </div>
+        </section>
+
+        <section id="talleres" class="tab-content">
+            <div class="workshops-grid" id="workshopsGrid">
+                <!-- Se llena con JS -->
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // FUNCIÓN MÁGICA: LEE EL JSON Y CREA LA WEB
+        fetch('./data.json')
+            .then(response => response.json())
+            .then(data => {
+                // Títulos
+                document.getElementById('hero-title').innerText = data.hero_title;
+                document.getElementById('hero-desc').innerText = data.hero_desc;
+
+                // Cargar Obras
+                const gallery = document.getElementById('gallerySlider');
+                data.obras.forEach(obra => {
+                    gallery.innerHTML += `
+                        <article class="artwork-item">
+                            <img src="${obra.image}" class="artwork-img">
+                            <div class="artwork-info">
+                                <h3 class="artwork-title">${obra.title}</h3>
+                                <p class="artwork-tech">${obra.tech}</p>
+                                <a href="https://wa.me/5491168618601?text=Hola Nancy, quiero consultar por la obra ${obra.title}" class="btn-consultar-obra">WhatsApp</a>
+                            </div>
+                        </article>
+                    `;
+                });
+
+                // Cargar Talleres
+                const grid = document.getElementById('workshopsGrid');
+                data.talleres.forEach(taller => {
+                    grid.innerHTML += `
+                        <article class="workshop-card">
+                            <div class="workshop-img"><img src="${taller.image}"></div>
+                            <div class="workshop-info">
+                                <h3 class="workshop-title">${taller.title}</h3>
+                                <p class="workshop-desc">${taller.desc}</p>
+                                <a href="https://wa.me/5491168618601?text=Info taller ${taller.title}" class="btn-whatsapp">Consultar</a>
+                            </div>
+                        </article>
+                    `;
+                });
+            });
+
+        function openTab(evt, tabName) {
+            const tabContents = document.querySelectorAll(".tab-content");
+            const tabBtns = document.querySelectorAll(".tab-btn");
+            tabContents.forEach(content => content.classList.remove("active"));
+            tabBtns.forEach(btn => btn.classList.remove("active"));
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
+</body>
+</html>
