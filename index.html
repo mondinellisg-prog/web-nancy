@@ -3,87 +3,228 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nancy Gil | Arte</title>
-    <!-- Mismos estilos del mensaje anterior aquí (CSS) -->
+    <title>Nancy Gil | Galería de Arte</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
-        /* ... COPIAR EL CSS DEL MENSAJE ANTERIOR ... */
+        :root {
+            --gold: #c5a059;
+            --dark: #1a1a1a;
+            --light-bg: #fdfdfd;
+            --text-muted: #666;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--dark);
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        /* Hero elegante */
+        header {
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            background: radial-gradient(circle, #ffffff 0%, #f3f3f3 100%);
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            margin: 0;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        header p {
+            font-style: italic;
+            color: var(--text-muted);
+            max-width: 600px;
+            font-size: 1.2rem;
+        }
+
+        /* Tabs tipo Galería */
+        .tabs-nav {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            cursor: pointer;
+            padding: 10px 0;
+            color: var(--text-muted);
+            border-bottom: 2px solid transparent;
+            transition: 0.4s;
+        }
+
+        .tab-btn.active {
+            color: var(--gold);
+            border-bottom: 2px solid var(--gold);
+        }
+
+        /* Slider de Obras (Efecto Museo) */
+        .gallery-container {
+            padding: 0 5%;
+            overflow-x: auto;
+            display: flex;
+            gap: 40px;
+            scroll-behavior: smooth;
+            padding-bottom: 50px;
+        }
+
+        .gallery-container::-webkit-scrollbar { height: 4px; }
+        .gallery-container::-webkit-scrollbar-thumb { background: var(--gold); }
+
+        .artwork-card {
+            flex: 0 0 350px;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: 0.5s;
+        }
+
+        .artwork-card:hover { transform: translateY(-10px); }
+
+        .artwork-card img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            border: 1px solid #eee;
+        }
+
+        .artwork-card h3 {
+            font-family: 'Playfair Display', serif;
+            margin: 20px 0 5px;
+        }
+
+        /* Talleres Grid */
+        .talleres-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 0 8%;
+        }
+
+        .taller-card {
+            background: white;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .taller-card img { width: 100%; height: 200px; object-fit: cover; }
+        .taller-info { padding: 25px; }
+
+        .btn-ws {
+            display: block;
+            background: var(--dark);
+            color: white;
+            text-decoration: none;
+            padding: 12px;
+            text-align: center;
+            margin-top: 20px;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        .btn-ws:hover { background: var(--gold); }
+
+        .tab-content { display: none; animation: fadeIn 0.8s; }
+        .tab-content.active { display: block; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .artwork-card { flex: 0 0 280px; }
+        }
     </style>
 </head>
 <body>
-    <header class="hero">
-        <h1 id="hero-title">Cargando...</h1>
-        <p id="hero-desc"></p>
-    </header>
 
-    <main class="tabs-container">
-        <div class="tabs-nav">
-            <button class="tab-btn active" onclick="openTab(event, 'obras')">Galería de Obras</button>
-            <button class="tab-btn" onclick="openTab(event, 'talleres')">Cursos y Talleres</button>
-        </div>
+<header>
+    <h1 id="hero-title">Nancy Gil</h1>
+    <p id="hero-desc">Cargando inspiración...</p>
+</header>
 
-        <section id="obras" class="tab-content active">
-            <div class="gallery-wrapper">
-                <div class="gallery-slider" id="gallerySlider">
-                    <!-- Se llena con JS -->
-                </div>
-            </div>
-        </section>
+<div class="tabs-nav">
+    <button class="tab-btn active" onclick="openTab(event, 'obras')">Obras</button>
+    <button class="tab-btn" onclick="openTab(event, 'talleres')">Talleres</button>
+</div>
 
-        <section id="talleres" class="tab-content">
-            <div class="workshops-grid" id="workshopsGrid">
-                <!-- Se llena con JS -->
-            </div>
-        </section>
-    </main>
+<div id="obras" class="tab-content active">
+    <div class="gallery-container" id="gallerySlider"></div>
+</div>
 
-    <script>
-        // FUNCIÓN MÁGICA: LEE EL JSON Y CREA LA WEB
-        fetch('./data.json')
-            .then(response => response.json())
-            .then(data => {
-                // Títulos
-                document.getElementById('hero-title').innerText = data.hero_title;
-                document.getElementById('hero-desc').innerText = data.hero_desc;
+<div id="talleres" class="tab-content">
+    <div class="talleres-grid" id="talleresGrid"></div>
+</div>
 
-                // Cargar Obras
-                const gallery = document.getElementById('gallerySlider');
-                data.obras.forEach(obra => {
-                    gallery.innerHTML += `
-                        <article class="artwork-item">
-                            <img src="${obra.image}" class="artwork-img">
-                            <div class="artwork-info">
-                                <h3 class="artwork-title">${obra.title}</h3>
-                                <p class="artwork-tech">${obra.tech}</p>
-                                <a href="https://wa.me/5491168618601?text=Hola Nancy, quiero consultar por la obra ${obra.title}" class="btn-consultar-obra">WhatsApp</a>
-                            </div>
-                        </article>
-                    `;
-                });
+<script>
+    async function loadContent() {
+        try {
+            const resp = await fetch('./data.json');
+            const data = await resp.json();
 
-                // Cargar Talleres
-                const grid = document.getElementById('workshopsGrid');
-                data.talleres.forEach(taller => {
-                    grid.innerHTML += `
-                        <article class="workshop-card">
-                            <div class="workshop-img"><img src="${taller.image}"></div>
-                            <div class="workshop-info">
-                                <h3 class="workshop-title">${taller.title}</h3>
-                                <p class="workshop-desc">${taller.desc}</p>
-                                <a href="https://wa.me/5491168618601?text=Info taller ${taller.title}" class="btn-whatsapp">Consultar</a>
-                            </div>
-                        </article>
-                    `;
-                });
+            document.getElementById('hero-title').innerText = data.hero_title;
+            document.getElementById('hero-desc').innerText = data.hero_desc;
+
+            const gallery = document.getElementById('gallerySlider');
+            data.obras.forEach(o => {
+                gallery.innerHTML += `
+                    <div class="artwork-card">
+                        <img src="${o.image}" alt="${o.title}">
+                        <h3>${o.title}</h3>
+                        <p style="color:var(--text-muted)">${o.tech}</p>
+                        <a href="https://wa.me/5491168618601?text=Me interesa la obra: ${o.title}" class="btn-ws">Consultar</a>
+                    </div>
+                `;
             });
 
-        function openTab(evt, tabName) {
-            const tabContents = document.querySelectorAll(".tab-content");
-            const tabBtns = document.querySelectorAll(".tab-btn");
-            tabContents.forEach(content => content.classList.remove("active"));
-            tabBtns.forEach(btn => btn.classList.remove("active"));
-            document.getElementById(tabName).classList.add("active");
-            evt.currentTarget.classList.add("active");
+            const workshops = document.getElementById('talleresGrid');
+            data.talleres.forEach(t => {
+                workshops.innerHTML += `
+                    <div class="taller-card">
+                        <img src="${t.image}">
+                        <div class="taller-info">
+                            <h3 style="font-family:'Playfair Display'">${t.title}</h3>
+                            <p>${t.desc}</p>
+                            <a href="https://wa.me/5491168618601?text=Info sobre taller: ${t.title}" class="btn-ws">Inscribirme</a>
+                        </div>
+                    </div>
+                `;
+            });
+        } catch (e) {
+            console.error("Error cargando JSON:", e);
+            document.getElementById('hero-desc').innerText = "Asegurate de que exista el archivo data.json en GitHub.";
         }
-    </script>
+    }
+
+    function openTab(evt, tabName) {
+        const contents = document.querySelectorAll(".tab-content");
+        const btns = document.querySelectorAll(".tab-btn");
+        contents.forEach(c => c.classList.remove("active"));
+        btns.forEach(b => b.classList.remove("active"));
+        document.getElementById(tabName).classList.add("active");
+        evt.currentTarget.classList.add("active");
+    }
+
+    loadContent();
+</script>
+
 </body>
 </html>
