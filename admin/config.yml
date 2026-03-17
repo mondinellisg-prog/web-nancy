@@ -8,28 +8,40 @@ media_folder: "optm"
 public_folder: "optm"
 
 collections:
-  - name: "config"
-    label: "Contenido de la Web"
+  - name: "contenido"
+    label: "Administrar Web"
     files:
-      - name: "landing"
-        label: "Página Principal"
+      - name: "data"
+        label: "Datos del Sitio"
         file: "data.json"
         fields:
-          - { label: "Título Hero", name: "hero_title", widget: "string" }
-          - { label: "Descripción Hero", name: "hero_desc", widget: "text" }
-          
-          - name: "obras"
-            label: "Galería de Cuadros"
-            widget: "list"
+          # --- HERO (PORTADA) ---
+          - name: "hero"
+            label: "1. Encabezado"
+            widget: "object"
+            collapsed: true
             fields:
-              - { label: "Título", name: "title", widget: "string" }
-              - { label: "Técnica", name: "tech", widget: "string" }
-              - { label: "Foto", name: "image", widget: "image" }
+              - {label: "Título", name: "hero_title", widget: "string"}
+              - {label: "Descripción", name: "hero_desc", widget: "string"}
 
-          - name: "talleres"
-            label: "Cursos y Talleres"
+          # --- OBRAS ---
+          - name: "obras"
+            label: "2. Galería de Obras"
             widget: "list"
+            collapsed: false
+            summary: "{{title}}"
             fields:
-              - { label: "Nombre Taller", name: "title", widget: "string" }
-              - { label: "Descripción", name: "desc", widget: "text" }
-              - { label: "Imagen", name: "image", widget: "image" }
+              - {label: "Título de la Obra", name: "title", widget: "string"}
+              - {label: "Técnica", name: "tech", widget: "string", required: false}
+              - {label: "Foto de la Obra", name: "image", widget: "image"}
+
+          # --- TALLERES ---
+          - name: "talleres"
+            label: "3. Cursos y Talleres"
+            widget: "list"
+            collapsed: true
+            summary: "{{title}}"
+            fields:
+              - {label: "Nombre del Taller", name: "title", widget: "string"}
+              - {label: "Descripción", name: "desc", widget: "text"}
+              - {label: "Imagen del Taller", name: "image", widget: "image"}
