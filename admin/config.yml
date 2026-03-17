@@ -1,10 +1,11 @@
 backend:
   name: github
-  repo: TU_USUARIO_GITHUB/web-nancy-gil # CAMBIA ESTO
+  repo: mondinellisg-prog/web-nancy-gil
   branch: main
-
-media_folder: "assets"
-public_folder: "assets"
+  base_url: https://sveltia-auth-proxy.tu-usuario.workers.dev # TU URL DEL WORKER SIN EL /callback
+  
+media_folder: "optm"
+public_folder: "optm"
 
 collections:
   - name: "config"
