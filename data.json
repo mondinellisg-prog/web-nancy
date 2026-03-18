@@ -1,26 +1,76 @@
 {
-  "hero_title": "Nancy de los Santos",
-  "hero_desc": "Artista Plástica & Docente. Explorando la sensibilidad a través del color y la forma.",
   "obras": [
-    { "title": "Obra 1", "tech": "Técnica Mixta", "image": "./optm/1.jpg" },
-    { "title": "Obra 2", "tech": "Técnica Mixta", "image": "./optm/2.jpg" },
-    { "title": "Obra 3", "tech": "Técnica Mixta", "image": "./optm/3.jpg" },
-    { "title": "Obra 4", "tech": "Técnica Mixta", "image": "./optm/4.jpg" },
-    { "title": "Obra 5", "tech": "Técnica Mixta", "image": "./optm/5.jpg" },
-    { "title": "Obra 6", "tech": "Técnica Mixta", "image": "./optm/6.jpg" },
-    { "title": "Obra 7", "tech": "Técnica Mixta", "image": "./optm/7.jpg" },
-    { "title": "Obra 8", "tech": "Técnica Mixta", "image": "./optm/8.jpg" },
-    { "title": "Obra 9", "tech": "Técnica Mixta", "image": "./optm/9.jpg" },
-    { "title": "Obra 10", "tech": "Técnica Mixta", "image": "./optm/10.jpg" },
-    { "title": "Obra 11", "tech": "Técnica Mixta", "image": "./optm/11.jpg" },
-    { "title": "Obra 12", "tech": "Técnica Mixta", "image": "./optm/12.jpg" },
-    { "title": "Obra 13", "tech": "Técnica Mixta", "image": "./optm/13.jpg" }
+    {
+      "title": "Obra 2",
+      "tech": "Técnica Mixta",
+      "image": "./optm/2.jpg"
+    },
+    {
+      "title": "Obra 1",
+      "tech": "Técnica Mixta",
+      "image": "./optm/1.jpg"
+    },
+    {
+      "title": "Obra 3",
+      "tech": "Técnica Mixta",
+      "image": "./optm/3.jpg"
+    },
+    {
+      "title": "Obra 4",
+      "tech": "Técnica Mixta",
+      "image": "./optm/4.jpg"
+    },
+    {
+      "title": "Obra 5",
+      "tech": "Técnica Mixta",
+      "image": "./optm/5.jpg"
+    },
+    {
+      "title": "Obra 6",
+      "tech": "Técnica Mixta",
+      "image": "./optm/6.jpg"
+    },
+    {
+      "title": "Obra 7",
+      "tech": "Técnica Mixta",
+      "image": "./optm/7.jpg"
+    },
+    {
+      "title": "Obra 8",
+      "tech": "Técnica Mixta",
+      "image": "./optm/8.jpg"
+    },
+    {
+      "title": "Obra 9",
+      "tech": "Técnica Mixta",
+      "image": "./optm/9.jpg"
+    },
+    {
+      "title": "Obra 10",
+      "tech": "Técnica Mixta",
+      "image": "./optm/10.jpg"
+    },
+    {
+      "title": "Obra 11",
+      "tech": "Técnica Mixta",
+      "image": "./optm/11.jpg"
+    },
+    {
+      "title": "Obra 12",
+      "tech": "Técnica Mixta",
+      "image": "./optm/12.jpg"
+    },
+    {
+      "title": "Obra 13",
+      "tech": "Técnica Mixta",
+      "image": "./optm/13.jpg"
+    }
   ],
   "talleres": [
     {
       "title": "Técnicas de Dibujo",
       "desc": "Grafito, carboncillo, tintas. Luces, sombras y perspectiva.",
-     "image": "./optm/t10.jpg"
+      "image": "./optm/t10.jpg"
     },
     {
       "title": "Técnicas de Pintura",
@@ -30,18 +80,19 @@
     {
       "title": "Patinas y Reciclado",
       "desc": "Reciclado de muebles y objetos decorativos. Dale vida a tus espacios.",
-"image": "./optm/t1.jpg"
+      "image": "./optm/t1.jpg"
     },
     {
       "title": "Decorativa & Decoupage",
       "desc": "Creación de objetos únicos y reciclado artístico.",
-     "image": "./optm/t4.jpg"
+      "image": "./optm/t4.jpg"
     },
     {
       "title": "Mosaiquismo",
       "desc": "Dominá la técnica del mosaiquismo.",
-     "image": "./optm/t6.jpg"
+      "image": "./optm/t6.jpg"
     }
-   
-  ]
+  ],
+  "hero_title": "Nancy de los Santos",
+  "hero_desc": "Artista Plástica & Docente. Explorando la sensibilidad a través del color y la forma."
 }
