@@ -1,14 +1,14 @@
 {
   "obras": [
     {
-      "title": "Obra 2",
-      "tech": "Técnica Mixta",
-      "image": "./optm/2.jpg"
-    },
-    {
       "title": "Obra 1",
       "tech": "Técnica Mixta",
       "image": "./optm/1.jpg"
+    },
+    {
+      "title": "Obra 2",
+      "tech": "Técnica Mixta",
+      "image": "./optm/2.jpg"
     },
     {
       "title": "Obra 3",
